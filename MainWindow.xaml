@@ -1,0 +1,60 @@
+﻿<Window x:Class="SaleWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaleWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="12.03.2023" x:Name="tb1" Width="100"></TextBox>
+            <TextBox Text="19.03.2023" x:Name="tb2" Width="100"></TextBox>
+            <Button Click="Button_Click" Content="Получить" Width="40"/>
+        </StackPanel>
+        
+        <ListView x:Name="listSourse" Background="LightGray" Grid.Row="1" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="{Binding Client.LastN}"/>
+
+                        </StackPanel>
+
+                        <ListView ItemsSource="{Binding Telephones}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Width="600">
+                                        <TextBlock Text="{Binding Articul}"/>
+                                        <TextBlock Text="  "/>
+                                        <TextBlock Text="{Binding Manufacturer}"/>
+                                        <TextBlock Text="  "/>
+                                        <TextBlock Text="{Binding NameTelephone}"/>
+                                        <TextBlock Text="  "/>
+                                        <TextBlock Text="{Binding Cost}"/>
+                                        <TextBlock Text="  "/>
+                                        <TextBlock Text="{Binding Count}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Image Width="50" Source="/Res/ExcelIcon.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+            <Image Width="50" Source="/Res/WordIcon.png" MouseLeftButtonDown="Image_MouseLeftButtonDown_1"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
